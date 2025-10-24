@@ -1,13 +1,10 @@
 function adicionarTarefa() {
-  //recebe valor do input do usuário
   const inputTarefa = document.getElementById("inputTarefa");
   let tarefa = inputTarefa.value.trim();
 
   const mensagem = document.getElementById("mensagem");
 
-  // se o valor do input for vazio então mostre uma mensagem de erro para o usuário
   if (tarefa == "") {
-    //mostre uma mensagem de erro
     let mensagemErro = "Digite uma tarefa para adicioná-la a sua lista!";
     mensagem.textContent = mensagemErro;
     mensagem.style.color = "red";
@@ -16,12 +13,10 @@ function adicionarTarefa() {
     mensagem.textContent = mensagemErro;
     mensagem.style.color = "red";
   } else {
-    //mensagem de tarefa adicionada com sucesso
     let mensagemSucesso = "Tarefa adicionada com sucesso!";
     mensagem.textContent = mensagemSucesso;
     mensagem.style.color = "green";
 
-    //cria novo item (li) e insere na (lista ul)
     const listaTarefas = document.getElementById("listaTarefas");
     let novaTarefa = document.createElement("li");
     novaTarefa.textContent = tarefa;
@@ -54,10 +49,8 @@ function adicionarTarefa() {
     const textoTarefa = document.createElement("span");
     textoTarefa.textContent = tarefa;
 
-    // Adiciona o span dentro do li
     novaTarefa.appendChild(textoTarefa);
 
-    // Adiciona a imagem, se houver
     const arquivo = inputImagem.files[0];
     if (arquivo) {
       const reader = new FileReader();
@@ -70,7 +63,6 @@ function adicionarTarefa() {
         img.style.height = "40px";
         img.style.marginLeft = "10px";
 
-        // Insere a imagem **depois do span de texto**
         novaTarefa.insertBefore(img, textoTarefa.nextSibling);
       };
       reader.readAsDataURL(arquivo);
@@ -113,7 +105,6 @@ function adicionarTarefa() {
     listaTarefas.appendChild(novaTarefa);
   }
 
-  //limpa o input do usuário
   inputTarefa.value = "";
   inputImagem.value = "";
 }
